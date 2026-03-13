@@ -38,6 +38,9 @@ export async function generateMetadata({ params }: { params: Params }) {
   return {
     title: stripHtmlTags(post.title),
     description: stripHtmlTags(post.description),
+    alternates: {
+      canonical: `/posts/${post.id}`,
+    }
   };
 }
 

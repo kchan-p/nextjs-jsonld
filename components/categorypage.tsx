@@ -53,7 +53,6 @@ async function getCtagoryPageNum(category: string) {
 }
 // メタデータの生成
 export async function generateMetadata({ category, page }: PropItem) {
-
     const catName = (await getCategoryData(category)).name;
 
     const path = `/category/${catName}${page === 1 ? "" : `/page/${page}`}`;
