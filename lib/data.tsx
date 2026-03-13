@@ -34,14 +34,14 @@ const Uncategorized: Category = { id: "uncategorized", name: "未分類" };
 const category: Category[] = [
     Uncategorized,
     { id: "life", name: "生活" },
-    { id: "study", name: "勉強" }
+    { id: "study", name: "勉強" },
 ];
 const getUncategorized = () => Uncategorized;
 
 async function getPostsData(){
     'use cache'
     
-    const datas = [{ cat:category[1], count: 12 }, { cat:category[2], count: 4 }];
+    const datas = [{ cat:category[0], count: 18 },{ cat:category[1], count: 32 }, { cat:category[2], count: 4 }];
    
     return datas.reduce<[Post[],number]>( (r,v)=>{
         for (let count = 1; count <= v.count; count++,r[1]++) {
@@ -52,7 +52,7 @@ async function getPostsData(){
 
             r[0].push(Object.freeze({
                 id: `p${id}`,
-                title: `${d}の日記(${v.cat.name})`,
+                title: `${d}の日記(p${id})`,
                 category: v.cat.id,
                 description: `${d}の日記の記事(${v.cat.name})`,
                 content: `今日は${d}です。これは(${v.cat.name})の記事です。`,
@@ -72,7 +72,7 @@ async function getSiteData() {
     return siteData;
 }
 // 全カテゴリーデータの取得
-async function getCategorys() {
+async function getCategories() {
     'use cache'
     return category;
 }
@@ -97,5 +97,5 @@ async function getCategoryPosts(categoryId: string) {
     return (await getPostsData()).filter(p => p.category === categoryId);
 }
 
-export { getSiteData, getCategorys, getCategory, getPosts, getPost, getCategoryPosts, getUncategorized };
+export { getSiteData, getCategories, getCategory, getPosts, getPost, getCategoryPosts, getUncategorized };
 export type { SiteData, Category, Post };

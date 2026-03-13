@@ -3,7 +3,7 @@
  */
 import { notFound } from "next/navigation";
 import { getSiteData, getCategory, getPosts, getPost, getUncategorized } from "@/lib/data";
-import { JsonLd, createBreadcrumbLD } from "@/lib/jsonld";
+import { JsonLd, createBreadcrumbLD } from "@/components/jsonld";
 import Link from "next/link";
 import Image from 'next/image';
 import { stripHtmlTags, purify } from "@/lib/purify";

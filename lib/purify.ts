@@ -1,6 +1,6 @@
 import DOMPurify from "isomorphic-dompurify"
 
-function purify(html) {
+function purify(html:string) {
     if( !html ) return "";
     
     return DOMPurify.sanitize(html, {
@@ -12,7 +12,7 @@ function purify(html) {
         ALLOWED_ATTR: ["href", "target", "rel"]
     })
 }
-function stripHtmlTags(html){
+function stripHtmlTags(html:string){
     if( !html ) return "";
 
     return html
@@ -23,17 +23,24 @@ function stripHtmlTags(html){
     .trim()
 }
 
-function escapeHtml(str) {
-  if (typeof str !== 'string') return str;
-  return str.replace(/[&"<>']/g, function(match) {
-    const escape = {
-      '&': '&amp;',
-      '"': '&quot;',
-      '<': '&lt;',
-      '>': '&gt;',
-      "'": '&#39;'
-    };
-    return escape[match];
-  });
-} 
-export {purify,stripHtmlTags,escapeHtml};
+function escapeHtml<T>(str: T): T | string {
+  if (typeof str !== "string") return str;
+
+  const escape: Record<string, string> = {
+    "&": "&amp;",
+    '"': "&quot;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "'": "&#39;",
+  };
+
+  return str.replace(/[&"<>']/g, (match) => escape[match]);
+}
+
+function sanitizeSlug(slug: string) {
+  if (!/^[a-z0-9-]+$/.test(slug)) {
+    return false;
+  }
+  return slug;
+}
+export {purify,stripHtmlTags,escapeHtml,sanitizeSlug};

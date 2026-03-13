@@ -1,8 +1,8 @@
 /**
  * カテゴリ一覧ページ
  */
-import { getSiteData, getCategorys } from "@/lib/data";
-import { JsonLd, createCollectionPageLD,createBreadcrumbLD, createItemListLD } from "@/lib/jsonld";
+import { getSiteData, getCategories } from "@/lib/data";
+import { JsonLd, createCollectionPageLD,createBreadcrumbLD, createItemListLD } from "@/components/jsonld";
 import Link from "next/link";
 import { stripHtmlTags } from "@/lib/purify";
 
@@ -13,7 +13,7 @@ export const metadata = {
 
 export default async function Page() {
   const siteData = await getSiteData();
-  const categorys = await getCategorys();
+  const categorys = await getCategories();
 
   const url = `${siteData.url}/category`;
 

@@ -13,12 +13,18 @@ https://note.affi-sapo-sv.com/nextjs-jsonld.php<br>
 
 ## 開発方法
 
+環境変数 NEXT_PUBLIC_SITE_URL を参照します。
+※.env.devlopmentにて http://localhost:3000 をセット済み
+
 1.npm install<br>
 2.npm run dev<br>
 
 ## ビルド/実行
 
+環境変数 NEXT_PUBLIC_SITE_URL にサイトの完全なベースURL（オリジン）をセット後にビルド<br>
+<br>
 npm run build<br>
+npm run start<br>
 
 ## 作者
 

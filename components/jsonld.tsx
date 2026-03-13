@@ -12,7 +12,7 @@ import type {
   ListItem,
   ItemList
 } from "schema-dts"
-import { escapeHtml } from "./purify";
+import { escapeHtml } from "../lib/purify";
 
 
 // JSON-LD出力コンポーネント
