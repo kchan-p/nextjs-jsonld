@@ -9,7 +9,7 @@ export async function generateMetadata() {
   const title = stripHtmlTags(siteData.title);
 
   return {
-    metadata:new URL(siteData.url),
+    metadataBase:new URL(siteData.url),
     title: {
       default: title,
       template: `%s | ${title}`

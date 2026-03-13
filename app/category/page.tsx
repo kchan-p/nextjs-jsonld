@@ -9,6 +9,9 @@ import { stripHtmlTags } from "@/lib/purify";
 export const metadata = {
   title: "カテゴリ一覧",
   description: "カテゴリ一覧です",
+  alternates: {
+      canonical: `/category`,
+    }
 };
 
 export default async function Page() {

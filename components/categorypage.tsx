@@ -55,7 +55,7 @@ async function getCtagoryPageNum(category: string) {
 export async function generateMetadata({ category, page }: PropItem) {
     const catName = (await getCategoryData(category)).name;
 
-    const path = `/category/${catName}${page === 1 ? "" : `/page/${page}`}`;
+    const path = `/category/${category}${page === 1 ? "" : `/page/${page}`}`;
     const pageText = page === 1 ? "" : `-Page${page}`;
 
     return {
